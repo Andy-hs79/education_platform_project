@@ -1,1 +1,1 @@
-cd learning_platform; python manage.py migrate; python manage.py runserver 0.0.0.0:8000;
+cd education_platform; python manage.py migrate; python manage.py runserver 127.0.0.1:8000;
