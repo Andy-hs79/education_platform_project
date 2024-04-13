@@ -105,20 +105,3 @@ CREATE TABLE "Completed article" (
 	id_article binary PRIMARY KEY AUTOINCREMENT,
 	is_completed binary PRIMARY KEY AUTOINCREMENT
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
