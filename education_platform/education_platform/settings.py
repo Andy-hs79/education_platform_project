@@ -10,7 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+
+import os
 from pathlib import Path
+
+# from os.path import join, dirname
+from dotenv import find_dotenv, load_dotenv
+
+load_dotenv(find_dotenv())
+SECRET_KEY = os.environ.get("SECRET_KEY")
+DATABASE_PASSWORD = os.environ.get("DATABASE_PASSWORD")
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-h0738%84c#r)7&r0lqz^q7prj2f)y8h(_-zu2fj!ibg&cix2&n"
+# SECRET_KEY = "django-insecure-h0738%84c#r)7&r0lqz^q7prj2f)y8h(_-zu2fj!ibg&cix2&n"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,15 +47,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
-    'rest_framework',
-    'education_process',
-    'users',
+    "rest_framework",
+    "education_process",
+    "users",
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly"
     ]
 }
 
