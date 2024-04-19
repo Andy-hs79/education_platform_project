@@ -1,3 +1,3 @@
-# education_platform_project
+## education_platform_project
 ### Репозиторий обучающего курса
 ##          Python
