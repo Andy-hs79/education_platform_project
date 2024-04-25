@@ -1,3 +1,4 @@
-# education_platform_project
-### Репозиторий обучающего курса
-##          Python
+## education_platform_project
+## branch develop
+## Репозиторий обучающего курса
+#          Python
