@@ -21,4 +21,12 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
+# class Student(models.Model):
+#     id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     complited_tests = models.ManyToManyField(Complited_tests)
+#
+#
+# class Complited_tests(models.Model):
+
+
 # Create your models here.
