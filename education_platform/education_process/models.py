@@ -1,6 +1,6 @@
 from django.db import models
 
-from education_platform.users.models import Student, Teacher
+# from education_platform.users.models import Student, Teacher
 
 
 class Topic(models.Model):
@@ -11,13 +11,15 @@ class Topic(models.Model):
 
 class Group(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название группы")
-    group_teacher = models.ManyToManyField(Teacher, on_delete=models.CASCADE)
-    id_student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+
+#     group_teacher = models.ManyToManyField(Teacher, on_delete=models.SET_NULL, null=True)
+#     id_student = models.ForeignKey(Student, on_delete=models.SET_NULL, null=True)
 
 
 class Course(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название курса")
-    id_creator = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    # id_creator = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     id_topic = models.ForeignKey(
         Topic, on_delete=models.CASCADE
     )  # в курсе несколько разделов
