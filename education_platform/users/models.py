@@ -5,20 +5,13 @@ from django.utils.translation import gettext_lazy as _
 
 from .managers import CustomUserManager
 
-# import os
-# import sys
-# sys.path.append(os.path.abspath('../education_platform_project/education_platform'))
-# sys.path.append('E:/Andy/_Python/education_platform_project')
-
-# from education_process.models import Course
-
 
 class DateTimeMixin:
     date_created = models.DateTimeField(auto_now=True, default=timezone.now)
     date_updated = models.DateTimeField(auto_now_add=True, default=timezone.now)
 
 
-class User(AbstractBaseUser, PermissionsMixin, DateTimeMixin):
+class User(DateTimeMixin, AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_("email address"), unique=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -36,7 +29,7 @@ class User(AbstractBaseUser, PermissionsMixin, DateTimeMixin):
         return self.email
 
 
-class Student(models.Model, DateTimeMixin):
+class Student(DateTimeMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # complited_tests = models.ManyToManyField(Complited_tests)
 
@@ -47,7 +40,7 @@ class Student(models.Model, DateTimeMixin):
         return self.user
 
 
-class Teacher(models.Model, DateTimeMixin):
+class Teacher(DateTimeMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     # course = models.ForeignKey(Course, on_delete=models.CASCADE)
 

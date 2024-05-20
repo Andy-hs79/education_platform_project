@@ -1,20 +1,20 @@
 from django.db import models
-from users.models import DateTimeMixin, Student, Teacher
-
-# import os
-# import sys
-#
-# sys.path.append(os.path.abspath('../education_platform_project/education_platform'))
-# sys.path.append('E:/Andy/_Python/education_platform_project/education_platform')
+from django.utils import timezone
+from users.models import Student, Teacher
 
 
-class Topic(models.Model, DateTimeMixin):
+class DateTimeMixin:
+    date_created = models.DateTimeField(auto_now=True, default=timezone.now)
+    date_updated = models.DateTimeField(auto_now_add=True, default=timezone.now)
+
+
+class Topic(DateTimeMixin, models.Model):
     name = models.CharField(max_length=100, verbose_name="Название раздела")
     index_number = models.IntegerField()
     description = models.TextField()
 
 
-class Group(models.Model, DateTimeMixin):
+class Group(DateTimeMixin, models.Model):
     name = models.CharField(max_length=100, verbose_name="Название группы")
     group_teacher = models.ManyToManyField(
         Teacher
@@ -23,7 +23,7 @@ class Group(models.Model, DateTimeMixin):
     # course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
 
 
-class Course(models.Model, DateTimeMixin):
+class Course(DateTimeMixin, models.Model):
     name = models.CharField(max_length=100, verbose_name="Название курса")
 
     # в курсе несколько разделов
@@ -32,12 +32,12 @@ class Course(models.Model, DateTimeMixin):
     group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
 
 
-class Answer_options(models.Model, DateTimeMixin):
+class Answer_options(DateTimeMixin, models.Model):
     answer = models.TextField()
     true_answer = models.BooleanField()  # флаг верного ответа
 
 
-class Questions(models.Model, DateTimeMixin):
+class Questions(DateTimeMixin, models.Model):
     index_number = models.IntegerField()
     id_answer = models.ForeignKey(Answer_options, on_delete=models.SET_NULL, null=True)
 
