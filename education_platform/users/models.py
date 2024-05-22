@@ -20,10 +20,10 @@ class User(DateTimeMixin, AbstractBaseUser, PermissionsMixin):
     objects = CustomUserManager()
     first_name = models.CharField(max_length=20, verbose_name="Имя")
     last_name = models.CharField(max_length=20, verbose_name="Фамилия")
-    REQUIRED_FIELDS = [first_name, last_name]
+    REQUIRED_FIELDS = ["first_name", "last_name"]
 
     def __str__(self):
-        return self.email
+        return f"{self.email} {self.first_name} {self.last_name}"
 
     def __repr__(self):
         return self.email
@@ -34,10 +34,10 @@ class Student(DateTimeMixin, models.Model):
     # complited_tests = models.ManyToManyField(Complited_tests)
 
     def __str__(self):
-        return self.user
+        return self.user.email
 
     def __repr__(self):
-        return self.user
+        return self.user.email
 
 
 class Teacher(DateTimeMixin, models.Model):
@@ -45,10 +45,10 @@ class Teacher(DateTimeMixin, models.Model):
     # course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.user
+        return str(self.user)
 
     def __repr__(self):
-        return self.user
+        return str(self.user)
 
 
 # Create your models here.
