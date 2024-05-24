@@ -5,24 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="33e3d74f-7a09-402e-9ec1-193e789e2215" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/education_platform/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/education_platform/asgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/education_platform/urls.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/education_platform/wsgi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/education_process/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/education_process/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/education_process/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/education_process/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/education_process/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/manage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/users/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/users/apps.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/users/migrations/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/users/tests.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/education_platform/users/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/poetry.lock" beforeDir="false" afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,13 +34,23 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Andy/_Python/education_platform_project&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-PY-241.14494.241" />
+        <option value="bundled-python-sdk-0509580d9d50-28c9f5db9ffe-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-241.14494.241" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -67,6 +60,8 @@
       <option name="presentableId" value="Default" />
       <updated>1713979953734</updated>
       <workItem from="1713979955613" duration="1481000" />
+      <workItem from="1716452039678" duration="632000" />
+      <workItem from="1716562205282" duration="721000" />
     </task>
     <servers />
   </component>
