@@ -43,3 +43,18 @@ class Questions(DateTimeMixin, models.Model):
 
 
 # Create your models here.
+
+
+class Tests(DateTimeMixin,models.Model):
+    name = models.CharField(max_length=100, verbose_name="Название теста")
+   # test
+    discription = models.TextField()
+    index = models.IntegerField()
+    timelemit = models.DateTimeField()
+    questions = models.ForeignKey(Questions, on_delete=models.SET_NULL, null=True)
+
+class Complited_Tests(DateTimeMixin,models.Model):
+    iscomplited = models.BooleanField()
+    test = models.OneToOneField(Tests)
+
+class Recuered_test():

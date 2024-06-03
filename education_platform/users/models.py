@@ -2,7 +2,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-
+from education_process import Teacher
 from .managers import CustomUserManager
 
 
@@ -42,6 +42,7 @@ class Student(DateTimeMixin, models.Model):
 
 class Teacher(DateTimeMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    test = models.ForeignKey(Tests, on_delete=models.CASCADE)
     # course = models.ForeignKey(Course, on_delete=models.CASCADE)
 
     def __str__(self):
