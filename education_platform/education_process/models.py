@@ -1,5 +1,5 @@
 from django.db import models
-from users.models import Student, Teacher, DateTimeMixin, Specialization
+from users.models import DateTimeMixin, Specialization, Student, Teacher
 
 
 class Course(DateTimeMixin, models.Model):

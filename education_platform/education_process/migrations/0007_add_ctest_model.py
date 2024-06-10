@@ -6,7 +6,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("education_process", "0006_add_article_model"),
         ("users", "0004_add_teacher_model"),

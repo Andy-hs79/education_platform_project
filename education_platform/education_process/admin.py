@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import Course, Topic, Test, Question, Answer, Article, CompletedTest
-
+from .models import Answer, Article, CompletedTest, Course, Question, Test, Topic
 
 admin.site.register(Course)
 admin.site.register(Topic)

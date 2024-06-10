@@ -2,6 +2,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+
 from .managers import CustomUserManager
 
 
@@ -53,7 +54,9 @@ class Student(DateTimeMixin, models.Model):
 
 class Teacher(DateTimeMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    specialization = models.ManyToManyField(Specialization, verbose_name="Специализации")
+    specialization = models.ManyToManyField(
+        Specialization, verbose_name="Специализации"
+    )
 
     def __str__(self):
         return f"{self.pk} - {self.user.first_name}.{self.user.last_name}"
@@ -67,7 +70,9 @@ class Group(DateTimeMixin, models.Model):
     date_formation = models.DateField(
         verbose_name="Дата образования", default=timezone.now()
     )
-    course = models.ForeignKey("education_process.Course", on_delete=models.CASCADE, verbose_name="Курс")
+    course = models.ForeignKey(
+        "education_process.Course", on_delete=models.CASCADE, verbose_name="Курс"
+    )
     students = models.ManyToManyField(Student, verbose_name="Студенты")
     teacher = models.ForeignKey(
         Teacher, on_delete=models.CASCADE, verbose_name="Преподаватель"
