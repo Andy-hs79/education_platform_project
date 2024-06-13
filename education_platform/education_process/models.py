@@ -1,45 +1,74 @@
 from django.db import models
-from django.utils import timezone
-from users.models import Student, Teacher
-
-
-class DateTimeMixin:
-    date_created = models.DateTimeField(auto_now=True, default=timezone.now)
-    date_updated = models.DateTimeField(auto_now_add=True, default=timezone.now)
-
-
-class Topic(DateTimeMixin, models.Model):
-    name = models.CharField(max_length=100, verbose_name="Название раздела")
-    index_number = models.IntegerField()
-    description = models.TextField()
-
-
-class Group(DateTimeMixin, models.Model):
-    name = models.CharField(max_length=100, verbose_name="Название группы")
-    group_teacher = models.ManyToManyField(
-        Teacher
-    )  # , on_delete=models.SET_NULL, null=True)
-    student = models.ManyToManyField(Student)  # , on_delete=models.SET_NULL, null=True)
-    # course = models.ForeignKey(Course, on_delete=models.SET_NULL, null=True)
+from users.models import DateTimeMixin, Specialization, Student, Teacher
 
 
 class Course(DateTimeMixin, models.Model):
-    name = models.CharField(max_length=100, verbose_name="Название курса")
+    title = models.CharField(max_length=100, verbose_name="Название")
+    description = models.TextField(verbose_name="Описание")
+    duration = models.DurationField(verbose_name="Продолжительность")
+    specialization = models.ManyToManyField(Specialization)
 
-    # в курсе несколько разделов
-    id_topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
-    # один курс могут проходить несколько групп
-    group = models.ForeignKey(Group, on_delete=models.SET_NULL, null=True)
-
-
-class Answer_options(DateTimeMixin, models.Model):
-    answer = models.TextField()
-    true_answer = models.BooleanField()  # флаг верного ответа
+    def __str__(self):
+        return f"{self.pk} - {self.title}"
 
 
-class Questions(DateTimeMixin, models.Model):
-    index_number = models.IntegerField()
-    id_answer = models.ForeignKey(Answer_options, on_delete=models.SET_NULL, null=True)
+class Topic(DateTimeMixin, models.Model):
+    title = models.CharField(max_length=50, verbose_name="Название")
+    description = models.TextField(verbose_name="Описание")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name="Курс")
+
+    def __str__(self):
+        return f"{self.pk} - {self.title}"
 
 
-# Create your models here.
+class Test(DateTimeMixin, models.Model):
+    title = models.CharField(max_length=50, verbose_name="Название")
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, verbose_name="Тема")
+
+    def __str__(self):
+        return f"Test #{self.pk} - {self.title}"
+
+
+class Question(DateTimeMixin, models.Model):
+    DIFFICULTY_CHOICES = [
+        ("Easy", "Easy"),
+        ("Medium", "Medium"),
+        ("Hard", "Hard"),
+    ]
+
+    text = models.TextField(verbose_name="Текст вопроса")
+    difficulty = models.CharField(
+        max_length=6, choices=DIFFICULTY_CHOICES, verbose_name="Сложность"
+    )
+    test = models.ForeignKey(Test, on_delete=models.CASCADE, verbose_name="Тест")
+
+    def __str__(self):
+        return f"{self.pk} - {self.text} - {self.difficulty}"
+
+
+class Answer(DateTimeMixin, models.Model):
+    title = models.CharField(max_length=100, verbose_name="Ответ")
+    is_correct = models.BooleanField(verbose_name="Верный ответ")
+    question = models.ForeignKey(
+        Question, on_delete=models.CASCADE, verbose_name="Вопрос"
+    )
+
+    def __str__(self):
+        return f"{self.pk} - {self.title}"
+
+
+class Article(DateTimeMixin, models.Model):
+    title = models.CharField(max_length=100, verbose_name="Название")
+    description = models.TextField(verbose_name="Описание")
+    specializations = models.ManyToManyField(Specialization)
+
+    def __str__(self):
+        return f"{self.pk} - {self.title}"
+
+
+class CompletedTest(DateTimeMixin, models.Model):
+    test = models.ForeignKey(Test, on_delete=models.CASCADE)
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.student} - {self.test}"

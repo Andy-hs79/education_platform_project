@@ -29,26 +29,58 @@ class User(DateTimeMixin, AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-class Student(DateTimeMixin, models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # complited_tests = models.ManyToManyField(Complited_tests)
+class Specialization(models.Model):
+    name = models.CharField(_("Специализация"), max_length=100)
 
     def __str__(self):
-        return self.user.email
+        return f"{self.pk} - {self.name}"
 
     def __repr__(self):
-        return self.user.email
+        return f"{self.pk} - {self.name}"
+
+
+class Student(DateTimeMixin, models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, verbose_name="Пользователь"
+    )
+    rating = models.IntegerField(default=0, verbose_name="Рейтинг")
+
+    def __str__(self):
+        return f"{self.pk} - {self.user.first_name}.{self.user.last_name}"
+
+    def __repr__(self):
+        return f"{self.pk} - {self.user.first_name}.{self.user.last_name}"
 
 
 class Teacher(DateTimeMixin, models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    specialization = models.ManyToManyField(
+        Specialization, verbose_name="Специализации"
+    )
 
     def __str__(self):
-        return str(self.user)
+        return f"{self.pk} - {self.user.first_name}.{self.user.last_name}"
 
     def __repr__(self):
-        return str(self.user)
+        return f"{self.pk} - {self.user.first_name}.{self.user.last_name}"
 
 
-# Create your models here.
+class Group(DateTimeMixin, models.Model):
+    title = models.CharField(max_length=100, verbose_name="Название")
+    date_formation = models.DateField(
+        verbose_name="Дата образования", default=timezone.now()
+    )
+    course = models.ForeignKey(
+        "education_process.Course", on_delete=models.CASCADE, verbose_name="Курс"
+    )
+    students = models.ManyToManyField(Student, verbose_name="Студенты")
+    teacher = models.ForeignKey(
+        Teacher, on_delete=models.CASCADE, verbose_name="Преподаватель"
+    )
+
+    @property
+    def students_quantity(self):
+        return len(self.students.all())
+
+    def __str__(self):
+        return f"{self.pk} - {self.title} - {self.date_formation}"

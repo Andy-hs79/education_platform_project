@@ -1,11 +1,11 @@
 from django.contrib import admin
 
-from .models import Answer_options, Course, Group, Questions, Topic
+from .models import Answer, Article, CompletedTest, Course, Question, Test, Topic
 
-admin.site.register(Topic)
-admin.site.register(Group)
 admin.site.register(Course)
-admin.site.register(Answer_options)
-admin.site.register(Questions)
-
-# Register your models here.
+admin.site.register(Topic)
+admin.site.register(Test)
+admin.site.register(Question)
+admin.site.register(Answer)
+admin.site.register(Article)
+admin.site.register(CompletedTest)
